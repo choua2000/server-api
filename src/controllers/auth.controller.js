@@ -23,6 +23,12 @@ exports.signup = async (req, res) => {
         return res.status(500).json({ message: error.message })
     }
 }
+
+exports.filterName = async (req, res)=>{
+    const {name} = req.query;
+    const data = await Auth.findAll({where:{name:name}})
+    return res.status(200).json(data)
+}
 //login
 exports.signin = async (req, res) => {
     try {
